@@ -31,7 +31,7 @@ public class Aplicacion {
                 if (opcion_seleccionada == 1) {
                     ejecutarCargarAlimentos();
                 } else if (opcion_seleccionada == 2 && restaurante != null) {
-                    System.out.println("soy el 3\n");
+                    ejecutarNuevoPedido();
                 } else if (opcion_seleccionada == 3 && restaurante != null) {
                     ejecutarBuscarPorId();
                 } else if (opcion_seleccionada == 4 && restaurante != null) {
@@ -65,12 +65,12 @@ public class Aplicacion {
             return reader.readLine();
         } catch (IOException e) {
             System.out.println("Error leyendo de la consola");
-            e.printStackTrace();
         }
         return null;
     }
 
     //mostrar menu al usuario
+    
     private void ejecutarCargarAlimentos() {
 
         File archivoIngredientes = new File("data/ingredientes.txt");
@@ -111,6 +111,25 @@ public class Aplicacion {
        
         
     }  
+    private void ejecutarNuevoPedido(){
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Iniciando nuevo pedido...");
+        System.out.println("Por favor digite su nombre: ");
+        
+        String nombre = scanner.nextLine();
+        System.out.println("Por favor digite la direccion del pedido: ");
+        String direccion = scanner.nextLine();
+        restaurante.iniciarPedido(nombre, direccion);
+        System.out.println("Pedido creado correctamente,\nPor favor seleccione los productos que deseea agregar:");        
+        
+        
+    
+    
+    
+    
+    
+    }
 
     //main para comenzar aplicación
     public static void main(String[] args) throws FileNotFoundException, IOException {
